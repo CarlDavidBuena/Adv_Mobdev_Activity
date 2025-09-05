@@ -1,83 +1,90 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet, ScrollView, Text, Button, Modal, View} from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Image, Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'; // Added Text import
 import React, { useState } from 'react';
 
-export default function TabThreeScreen () {
-    const [modalVisible, setModalVisible] = useState(false);
 
-    return (
-            <ParallaxScrollView
-                headerBackgroundColor={{light: '#A1CEDC', dark: '#1D3D47'}}
-                headerImage={
-                    <Image
-                     source = {require('@/assets/images/v915-techi-025-l.png')}
-                     style = {styles.newBackground}
-                    />
-                }
-            >
-
-            <ScrollView style = {styles.scrollView}>
-                <Text style={styles.textdesign}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean velit dui, interdum id orci at, ultrices vestibulum nisi. Phasellus scelerisque iaculis tincidunt. Aliquam eget elit nulla. Ut gravida tortor sit amet accumsan dapibus. Donec scelerisque, quam at faucibus rhoncus, felis sem mollis urna, vel ultrices neque ex non dui. Praesent sagittis enim nec scelerisque egestas. Fusce a sapien scelerisque lorem pellentesque tempor. Cras consequat commodo ultricies. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur lacinia finibus pharetra. Nulla eget tempus enim. Suspendisse potenti.</Text>
-                <Button title="Random Button" onPress={() => setModalVisible(true) } />
-            </ScrollView>
-
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => setModalVisible(false)}
-            >
-              <View style={styles.modalContainer}>
-                <View style={styles.modalContent}>
-                  <Text>Hello from the dialog box!</Text>
-                  <Button title="Close" onPress={() => setModalVisible(false)} />
-                </View>
-              </View>
-            </Modal>
-
-            </ParallaxScrollView>
-        );
+export default function HomeScreen() {
 
 
+  return (
+    <View style={styles.mainContainer}>
+      <View>
+          <Image
+            source={require('@/assets/images/Spotify.png')}
+            style={styles.spotimg}
+          />
+      </View>
 
+      <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor="#aaa"
+      />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          placeholderTextColor="#aaa"
+        />
+
+        <TextInput
+           style={styles.input}
+           placeholder="Password"
+           placeholderTextColor="#aaa"
+         />
+
+         <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            placeholderTextColor="#aaa"
+          />
+      </View>
+
+      <View>
+          <TouchableOpacity style={styles.greenButton} onPress={() => console.log('Login pressed')}>
+            <Text style={styles.buttonText}>Sign In</Text>
+          </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
-
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-    textdesign: {
-    color: 'black',
-    fontSize: 30,
-    padding: 10,
-  },
-  scrollstyle: {
-    backgroundColor: 'pink',
-  },
-  newBackground: {
+  mainContainer: {
+    backgroundColor: '#000',
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'pink',
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+  spotimg: {
+    width: 250,
+    height: 200,
+    marginBottom: 140,
+    marginTop: 110
   },
-  modalContent: {
+  input: {
+    width: 300,
+    height: 40,
     backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
+    borderRadius: 8,
+    paddingHorizontal: 15,
+    color: '#000',
+    marginTop: 10,
   },
+    inputContainer: {
+    marginBottom: 10,
+  }
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  greenButton: {
+    backgroundColor: 'green',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderRadius: 30,
+    alignItems: 'center',
+    width: 300,
+  },
+
 
 });

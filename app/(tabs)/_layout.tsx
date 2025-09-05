@@ -50,6 +50,14 @@ export default function TabLayout() {
          }}
      />
 
+      <Tabs.Screen
+          name="SpotSignIn"
+          options={{
+              title: 'spotsignin',
+              tabBarIcon: ({ color }) => <AntDesign name="check" size={24} color={color} />,
+          }}
+      />
+
     </Tabs>
   );
 }
